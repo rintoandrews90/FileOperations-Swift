@@ -15,7 +15,7 @@ public extension FileOperations {
     ///   - bundle: bundle
     ///   - fileName: file name
     ///   - fileEXt: file extension
-    public static func getFilePath(bundle: Bundle, fileName: String, fileExt: String) -> String? {
+    static func getFilePath(bundle: Bundle, fileName: String, fileExt: String) -> String? {
         return bundle.path(forResource: fileName, ofType: fileExt)
     }
 
@@ -23,7 +23,7 @@ public extension FileOperations {
     /// - Parameters:
     ///   - bundle: budle
     ///   - fileName: file name
-    public static func getText(form bundle: Bundle, fileName: String) throws -> String? {
+    static func getText(form bundle: Bundle, fileName: String) throws -> String? {
 
         var contentOfFile: String?
         if let bundleurl = getFilePath(bundle: bundle, fileName: fileName, fileExt: "txt") {

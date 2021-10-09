@@ -15,7 +15,7 @@ public extension FileOperations {
     ///   - directoryType: documents/dahce/temp directory
     ///   - fileName: file name
     /// - Returns: directory url
-    public static func getDirectoryPath(by directoryPath: DirectoryPath, directoryName: String) -> URL {
+    static func getDirectoryPath(by directoryPath: DirectoryPath, directoryName: String) -> URL {
         switch directoryPath {
         case .document:
             return getDocumentDirectoryURL().appendingPathComponent(directoryName)
@@ -30,7 +30,7 @@ public extension FileOperations {
     /// - Parameters:
     ///   - directoryType: documents/dahce/temp directory
     /// - Returns: directory url
-    public static func getDirectoryPath(by directoryPath: DirectoryPath) -> URL {
+    static func getDirectoryPath(by directoryPath: DirectoryPath) -> URL {
         switch directoryPath {
         case .document:
             return getDocumentDirectoryURL()
@@ -44,14 +44,14 @@ public extension FileOperations {
     ///
     /// - Parameter url: url
     /// - Returns: string
-    public static func convertURLtoString(url: URL) -> String {
+    static func convertURLtoString(url: URL) -> String {
        return url.absoluteString
     }
     /// Convert string to URL
     ///
     /// - Parameter string: string
     /// - Returns: URL
-    public static func convertStringtoURL(string: String) -> URL {
+    static func convertStringtoURL(string: String) -> URL {
         return URL(string: string)!
     }
 

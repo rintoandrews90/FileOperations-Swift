@@ -12,13 +12,13 @@ public extension FileOperations {
     /// Method returns Document Directory URL
     ///
     /// - Returns: document directory URL
-    public static func getDocumentDirectoryURL() -> URL {
+    static func getDocumentDirectoryURL() -> URL {
        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     /// Method returns Temporary Directory URL
     ///
     /// - Returns: temporary directory URL
-    public static func getTemporaryDirectoryURL() -> URL {
+    static func getTemporaryDirectoryURL() -> URL {
         if #available(iOS 10.0, *) {
             return FileManager.default.temporaryDirectory
         } else {
@@ -29,13 +29,13 @@ public extension FileOperations {
     /// Method returns Cache Directory URL
     ///
     /// - Returns: cache directory URL
-    public static func getCacheDirectoryURL() -> URL {
+    static func getCacheDirectoryURL() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
     /// Remove all contents of the directory
     ///
     /// - Parameter directoryType: documents/dahce/temp directory
-    public static func clearDirectory(path: DirectoryPath) throws {
+    static func clearDirectory(path: DirectoryPath) throws {
         var directoryPath: URL!
         switch path {
         case .document:
@@ -55,7 +55,7 @@ public extension FileOperations {
     ///
     /// - Parameter directoryURL: directory url
     /// - Throws: throws error if failed
-    public static private func removeAllFiles(in directoryURL: URL) throws {
+    static func removeAllFiles(in directoryURL: URL) throws {
          do {
             let contents = try FileManager.default.contentsOfDirectory(at: directoryURL,
                                                                        includingPropertiesForKeys: nil,
@@ -75,7 +75,7 @@ public extension FileOperations {
     ///   - fileName: file name
     /// - Returns: url of the created directory
     /// - Throws: throws error if invalid file name
-    public static func createDirectory(in path: DirectoryPath, direcotryName: String) throws -> URL {
+    static func createDirectory(in path: DirectoryPath, direcotryName: String) throws -> URL {
 
         let directoryURL: URL!
 
@@ -108,7 +108,7 @@ public extension FileOperations {
     /// - Parameter directoryURL: directory URL
     /// - Returns: url of the created directory
     /// - Throws: throws error if invalid file name
-    public static func createDirectory(with directoryURL: URL) throws -> URL {
+    static func createDirectory(with directoryURL: URL) throws -> URL {
         /// Try to create directory with given URL
         do {
             try FileManager.default.createDirectory(atPath: directoryURL.path,
@@ -131,7 +131,7 @@ public extension FileOperations {
     ///   - directoryType: documents/dahce/temp directory
     ///   - directoryName: directory name
     /// - Throws: throws error if delete failed
-    public static func removeDirectory(by type: DirectoryPath, with directoryName: String) throws {
+    static func removeDirectory(by type: DirectoryPath, with directoryName: String) throws {
         let directoryURL = getDirectoryPath(by: type, directoryName: directoryName)
         do {
             try FileManager.default.removeItem(at: directoryURL)
@@ -143,7 +143,7 @@ public extension FileOperations {
     ///
     /// - Parameter path: path URL
     /// - Throws: throws error if delete failed
-    public static func removeDirectory(with directoryURL: URL) throws {
+    static func removeDirectory(with directoryURL: URL) throws {
         do {
             try FileManager.default.removeItem(at: directoryURL)
         } catch {

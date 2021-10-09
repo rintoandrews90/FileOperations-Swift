@@ -10,11 +10,11 @@ import Foundation
 
 public extension FileOperations {
     //Error Codes used the library
-    public enum ErrorCode: Int {
+    enum ErrorCode: Int {
         case invalidDirectoryeName  = 0
         case invalidDirectoryURL    = 1
     }
-    public static let errorDomain = "FileError"
+    static let errorDomain = "FileError"
     /// Create error
     ///
     /// - Parameters:
@@ -23,7 +23,7 @@ public extension FileOperations {
     ///   - failureReason: failure reason
     ///   - recoverySuggestion: recovery suggestion
     /// - Returns: error
-    public static func generateFileError(_ errorCode: ErrorCode,
+    static func generateFileError(_ errorCode: ErrorCode,
                                   description: String?,
                                   failureReason: String?,
                                   recoverySuggestion: String?) -> Error {
